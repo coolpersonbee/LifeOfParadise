@@ -78,7 +78,7 @@ wait(0.5)
 local newPosition = teleportPosition - Vector3.new(0, 50, 0) -- Move 50 studs under the map
 character:SetPrimaryPartCFrame(CFrame.new(newPosition))
 
--- Unequip the "Stoller"
+-- Unequip the "Stoller" immediately after teleporting under the map
 local backpack = player.Backpack
 local stroller = backpack:FindFirstChild("Stoller")
 if stroller then
@@ -93,16 +93,20 @@ part.BrickColor = BrickColor.new("Bright blue")
 part.Anchored = true
 part.Parent = game.Workspace
 
--- Re-equip the "Stoller" after the action
+-- Wait for 0.1 seconds before re-equipping the "Stoller"
+wait(0.1)
+
+-- Re-equip the "Stoller"
 if stroller then
     stroller.Parent = character
 end
 
--- Wait for a very short time (1 second)
+-- Wait for another short time (1 second)
 wait(1)
 
 -- Teleport the player back to their original position
 character:SetPrimaryPartCFrame(CFrame.new(originalPosition))
+
 
 
 
