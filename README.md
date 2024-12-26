@@ -1,5 +1,12 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+local CoreGui = game:GetService("StarterGui")
+CoreGui:SetCore("SendNotification", {
+    Title = "Injecting";
+    Text = "Please Wait";
+    Duration = 5;
+})
+
 Rayfield:Notify({
    Title = "Script Injecting",
    Content = "Please wait...",
