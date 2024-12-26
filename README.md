@@ -78,34 +78,26 @@ wait(0.5)
 local newPosition = teleportPosition - Vector3.new(0, 50, 0) -- Move 50 studs under the map
 character:SetPrimaryPartCFrame(CFrame.new(newPosition))
 
--- Unequip the "Stoller" immediately after teleporting under the map
-local backpack = player.Backpack
-local stroller = backpack:FindFirstChild("Stroller")
-if stroller then
-    stroller.Parent = nil
-end
-
--- Create a blue part (5.5 long) under the player
+-- Create a blue part under the player
 local part = Instance.new("Part")
-part.Size = Vector3.new(5.5, 1, 5.5) -- 5.5 studs long
-part.Position = newPosition - Vector3.new(0, 1, 0) -- Align it just below the player
+part.Size = Vector3.new(4, 1, 4)
+part.Position = newPosition - Vector3.new(0, 1, 0) -- Spawn part just under the player
 part.BrickColor = BrickColor.new("Bright blue")
 part.Anchored = true
 part.Parent = game.Workspace
 
--- Wait for 1 second before re-equipping the "Stoller"
-wait(1)
-
--- Re-equip the "Stoller"
-if stroller then
-    stroller.Parent = character
+-- Equip the "Stroller" immediately (assumes it's the 6th item in the backpack)
+local backpack = player.Backpack
+if backpack:FindFirstChild("Stroller") then
+    backpack.Stroller.Parent = character
 end
 
--- Wait for another short time (1 second)
+-- Wait for a very short time (1 second)
 wait(1)
 
 -- Teleport the player back to their original position
 character:SetPrimaryPartCFrame(CFrame.new(originalPosition))
+
 
 
 
