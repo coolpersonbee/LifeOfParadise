@@ -74,11 +74,21 @@ destroyRayfieldUI()
    end,
 })
 
-local Tab = Window:CreateTab("Script", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
 
 local Button = Tab:CreateButton({
    Name = "Indicator",
    Callback = function()
    print("RayfieldComplier GUI is working...")
+            local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "please check console";
+    Text = "It should be there";
+    Duration = "5";
+    Callback = NotificationBindable;
+})
+
    end,
 })
