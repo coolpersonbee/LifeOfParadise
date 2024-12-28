@@ -74,7 +74,7 @@ destroyRayfieldUI()
    end,
 })
 
-local Button = MainTab:CreateButton({
+local Button = Tab:CreateButton({
    Name = "Indicator",
    Callback = function()
    print("RayfieldComplier GUI is working...")
