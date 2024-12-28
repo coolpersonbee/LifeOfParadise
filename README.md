@@ -89,6 +89,5 @@ game.StarterGui:SetCore("SendNotification", {
     Duration = "5";
     Callback = NotificationBindable;
 })
-
    end,
 })
