@@ -381,7 +381,7 @@ loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Anthonys-ac
 local Button = Tab:CreateButton({
    Name = "Rape random",
    Callback = function()
-   -- Function to teleport to a random player and make them sit, then play animation
+   -- Function to teleport to a random player, make them sit, spawn a rod on top, and play animation
 local function teleportToRandomPlayerAndPlayAnimation()
     -- Get all players in the game
     local players = game:GetService("Players"):GetPlayers()
@@ -421,13 +421,30 @@ local function teleportToRandomPlayerAndPlayAnimation()
     bangAnim.AnimationId = "rbxassetid://148840371"  -- Replace with your animation ID
     local bang = localPlayer.Character.Humanoid:LoadAnimation(bangAnim)
     bang:Play(0.1, 1, 1)
-    
+
+    -- Create a rod-like part to appear above the player
+    local rod = Instance.new("Part")
+    rod.Size = Vector3.new(1, 6, 1)  -- Size of the rod (1 unit wide, 6 units tall)
+    rod.Position = localPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 3, 0)  -- Position it on top of the character
+    rod.Anchored = true
+    rod.CanCollide = false
+    rod.Material = Enum.Material.SmoothPlastic
+    rod.Color = Color3.fromRGB(255, 0, 0)  -- Red color for the rod, adjust as needed
+    rod.Parent = workspace
+
+    -- Optional: Add a cylinder shape to make the rod look more realistic (or just keep it as a simple part)
+    rod.Shape = Enum.PartType.Cylinder
+
     -- After a short delay, teleport the local player to the random player's position
     wait(1)  -- Adjust the delay if needed for the animation to play first
     localPlayer.Character:SetPrimaryPartCFrame(randomCharacter.HumanoidRootPart.CFrame)
+
+    -- Optional: Destroy the rod after a short time
+    wait(3)  -- Rod will stay for 3 seconds, adjust if needed
+    rod:Destroy()
 end
 
--- Call the function to teleport to a random player, make them sit, and play the animation
+-- Call the function to teleport to a random player, make them sit, spawn the rod, and play the animation
 teleportToRandomPlayerAndPlayAnimation()
 
    end,
