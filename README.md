@@ -372,5 +372,6 @@ TextChatService.OnIncomingMessage = function(textChatMessage)
     end
 
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Anthonys-acl-ANTI-CHAT-LOGGER-7184"))()
+
    end,
 })
