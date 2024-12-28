@@ -13,6 +13,8 @@ game.StarterGui:SetCore("SendNotification", {
     Callback = NotificationBindable;
 })
 
+task.wait(15)
+
 local Window = Rayfield:CreateWindow({
    Name = "literal baseplate script",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
@@ -372,6 +374,60 @@ local npfix = Instance.new("ScreenGui")
     end
 
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Anthonys-acl-ANTI-CHAT-LOGGER-7184"))()
+
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Rape random",
+   Callback = function()
+   -- Function to teleport to a random player and make them sit
+local function teleportToRandomPlayerAndPlayAnimation()
+    -- Get all players in the game
+    local players = game:GetService("Players"):GetPlayers()
+
+    -- Remove the local player from the list to avoid teleporting to themselves
+    local localPlayer = game.Players.LocalPlayer
+    local playerList = {}
+
+    for _, player in ipairs(players) do
+        if player ~= localPlayer then
+            table.insert(playerList, player)
+        end
+    end
+
+    -- If there are no other players, return
+    if #playerList == 0 then
+        warn("No other players found.")
+        return
+    end
+
+    -- Select a random player from the remaining players
+    local randomPlayer = playerList[math.random(1, #playerList)]
+    
+    -- Get the character of the selected random player
+    local randomCharacter = randomPlayer.Character
+    if not randomCharacter then
+        warn("Random player's character is not available.")
+        return
+    end
+
+    -- Teleport the local player to the random player's position
+    localPlayer.Character:SetPrimaryPartCFrame(randomCharacter.HumanoidRootPart.CFrame)
+
+    -- Make the random player sit
+    local humanoid = randomCharacter:WaitForChild("Humanoid")
+    humanoid.Sit = true
+
+    -- Create and play the animation on the local player's character
+    local bangAnim = Instance.new("Animation", localPlayer.Character)
+    bangAnim.AnimationId = "rbxassetid://148840371"  -- Replace with your animation ID
+    local bang = localPlayer.Character.Humanoid:LoadAnimation(bangAnim)
+    bang:Play(0.1, 1, 1)
+end
+
+-- Call the function to teleport to a random player, make them sit, and play the animation
+teleportToRandomPlayerAndPlayAnimation()
 
    end,
 })
