@@ -74,6 +74,8 @@ destroyRayfieldUI()
    end,
 })
 
+local Tab = Window:CreateTab("Script", 4483362458) -- Title, Image
+
 local Button = Tab:CreateButton({
    Name = "Indicator",
    Callback = function()
