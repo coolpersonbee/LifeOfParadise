@@ -372,6 +372,5 @@ local npfix = Instance.new("ScreenGui")
     end
 
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Anthonys-acl-ANTI-CHAT-LOGGER-7184"))()
-})
    end,
 })
