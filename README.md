@@ -59,7 +59,7 @@ local function destroyRayfieldUI()
     -- If you have a reference to the Rayfield GUI, you can destroy it
     -- This assumes the Rayfield UI is initialized in some variable, such as 'Rayfield'
 
-if Rayfield then
+    if Rayfield then
         -- Assuming Rayfield has a method to destroy or clear all its components
         -- (adjust based on your specific implementation)
         Rayfield:Destroy()
@@ -241,7 +241,7 @@ send.MouseButton1Click:connect(function()
     local TextChatService = game:GetService("TextChatService")
     local Players = game:GetService("Players")
 
-local function sendMessage(msg)
+    local function sendMessage(msg)
     local player = Players.LocalPlayer
     if TextChatService.ChatInputBarConfiguration.TargetTextChannel then
     TextChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync(msg)
@@ -275,7 +275,7 @@ end)
 local npfix = Instance.new("ScreenGui")
     npfix.Parent = game.CoreGui
 
-local MAIN = Instance.new("Frame")
+    local MAIN = Instance.new("Frame")
     MAIN.Size = UDim2.new(0.25, 0, 0.3, 0)
     MAIN.Position = UDim2.new(0.7, 0, 0.65, 0)
     MAIN.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
@@ -285,11 +285,11 @@ local MAIN = Instance.new("Frame")
     MAIN.BackgroundTransparency = 0
     MAIN.Parent = npfix
 
-local CORN = Instance.new("UICorner")
+    local CORN = Instance.new("UICorner")
     CORN.CornerRadius = UDim.new(0.1)
     CORN.Parent = MAIN
 
-local LABEL = Instance.new("TextLabel")
+    local LABEL = Instance.new("TextLabel")
     LABEL.Size = UDim2.new(1, 0, 0.2, 0)
     LABEL.Position = UDim2.new(0, 0, 0, 0)
     LABEL.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
@@ -302,7 +302,7 @@ local LABEL = Instance.new("TextLabel")
     LABEL.TextSize = 17
     LABEL.Parent = MAIN
 
-local SEC = Instance.new("Frame")
+    local SEC = Instance.new("Frame")
     SEC.Size = UDim2.new(1, 0, 0.02, 0)
     SEC.Position = UDim2.new(0, 0, 0.15, 0)
     SEC.BackgroundColor3 = Color3.new(0.25, 0.25, 0.25)
@@ -312,7 +312,7 @@ local SEC = Instance.new("Frame")
     SEC.BackgroundTransparency = 0
     SEC.Parent = MAIN
 
-local CREDIT = Instance.new("TextLabel")
+    local CREDIT = Instance.new("TextLabel")
     CREDIT.Size = UDim2.new(1, 0, 0.1, 0)
     CREDIT.Position = UDim2.new(0, 0, 0.16, 0)
     CREDIT.BackgroundColor3 = Color3.new(0, 0, 0)
@@ -325,7 +325,7 @@ local CREDIT = Instance.new("TextLabel")
     CREDIT.TextSize = 10
     CREDIT.Parent = MAIN
 
-local KILL = Instance.new("TextButton")
+    local KILL = Instance.new("TextButton")
     KILL.Size = UDim2.new(0.9, 0, 0.5, 0)
     KILL.Position = UDim2.new(0.05, 0, 0.3, 0)
     KILL.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
@@ -338,11 +338,11 @@ local KILL = Instance.new("TextButton")
     KILL.TextSize = 25
     KILL.Parent = MAIN
 
-local CORNER = Instance.new("UICorner")
+    local CORNER = Instance.new("UICorner")
     CORNER.CornerRadius = UDim.new(0.2)
     CORNER.Parent = KILL
 
-local HIDE = Instance.new("TextBox")
+    local HIDE = Instance.new("TextBox")
     HIDE.Size = UDim2.new(0.01, 0, 0.01, 0)
     HIDE.Position = UDim2.new(0, 0, 90, 0)
     HIDE.BackgroundColor3 = Color3.new(0, 0, 0)
@@ -355,17 +355,17 @@ local HIDE = Instance.new("TextBox")
     HIDE.TextSize = 15
     HIDE.Parent = npfix
 
-KILL.MouseButton1Click:connect(function()
+    KILL.MouseButton1Click:connect(function()
         MAIN:Destroy()
         end)
 
-local function updateChatLogs(message)
+    local function updateChatLogs(message)
     HIDE.Text = HIDE.Text .. "\n" .. message
     end
 
-local TextChatService = game:GetService("TextChatService")
+    local TextChatService = game:GetService("TextChatService")
 
-TextChatService.OnIncomingMessage = function(textChatMessage)
+    TextChatService.OnIncomingMessage = function(textChatMessage)
     local playerName = textChatMessage.TextSource.Name
     local messageContent = textChatMessage.Text
     updateChatLogs(playerName .. ": " .. messageContent)
