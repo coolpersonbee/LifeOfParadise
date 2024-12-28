@@ -374,14 +374,14 @@ local npfix = Instance.new("ScreenGui")
     end
 
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Anthonys-acl-ANTI-CHAT-LOGGER-7184"))()
-
+})
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "Rape random",
    Callback = function()
-   -- Function to teleport to a random player and make them sit
+   -- Function to teleport to a random player and make them sit, then play animation
 local function teleportToRandomPlayerAndPlayAnimation()
     -- Get all players in the game
     local players = game:GetService("Players"):GetPlayers()
@@ -412,18 +412,19 @@ local function teleportToRandomPlayerAndPlayAnimation()
         return
     end
 
-    -- Teleport the local player to the random player's position
-    localPlayer.Character:SetPrimaryPartCFrame(randomCharacter.HumanoidRootPart.CFrame)
-
-    -- Make the random player sit
-    local humanoid = randomCharacter:WaitForChild("Humanoid")
-    humanoid.Sit = true
-
-    -- Create and play the animation on the local player's character
+    -- Make the local player sit before teleporting
+    local localHumanoid = localPlayer.Character:WaitForChild("Humanoid")
+    localHumanoid.Sit = true
+    
+    -- Create and play the animation on the local player's character while sitting
     local bangAnim = Instance.new("Animation", localPlayer.Character)
     bangAnim.AnimationId = "rbxassetid://148840371"  -- Replace with your animation ID
     local bang = localPlayer.Character.Humanoid:LoadAnimation(bangAnim)
     bang:Play(0.1, 1, 1)
+    
+    -- After a short delay, teleport the local player to the random player's position
+    wait(1)  -- Adjust the delay if needed for the animation to play first
+    localPlayer.Character:SetPrimaryPartCFrame(randomCharacter.HumanoidRootPart.CFrame)
 end
 
 -- Call the function to teleport to a random player, make them sit, and play the animation
